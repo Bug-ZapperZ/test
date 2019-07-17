@@ -8,7 +8,7 @@ import RegisterPage from '../../RegisterPage/index'
 import {apiKey, authDomain, databaseURL, projectId, appId} from '../../../../Action/type'
 import { any } from 'prop-types';
 import { userInfo } from 'os';
-
+//hi
 
 class Login extends Component{
  
