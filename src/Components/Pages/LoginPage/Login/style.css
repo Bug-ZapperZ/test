@@ -1,56 +1,43 @@
- .bg{
-  padding-top: 5px;
-  padding-bottom: 5px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  border: 20px solid brown;
-  background: green;
-  /* background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; */
-} 
-.corners { 
-  background: #FFF;
-  height: 500px;
-  margin: 50px auto;
-  max-width: 400px;
-  line-height:25px;
-  position: relative;
-  width: 80%;
-  font-family:arial; font-size:16px; font-weight:bold; padding:10px; padding-top:40px;
-  -webkit-box-shadow: 0 1px 7px hsla(0,0%,0%,.2);
-     -moz-box-shadow: 0 1px 7px hsla(0,0%,0%,.2);
-          box-shadow: 0 1px 7px hsla(0,0%,0%,.2);
+.center-div{
+   margin : auto;
+   width : 90vh;
+   position: relative;
+   background-color : white;
+   box-shadow: 3px 3px 5px 6px #ccc;
 }
 
-/* Corner Effect */
-.corners:after,
-.corners:before {
-  background: #8D8787;
-  content: '';
-  height: 40px;
-  position: absolute;
-  top: -25px;
-  width: 100px;
-  opacity: 0.4;
-  -webkit-box-shadow: 0 5px 10px -7px hsla(0,0%,0%,.5);
-     -moz-box-shadow: 0 5px 10px -7px hsla(0,0%,0%,.5);
-          box-shadow: 0 5px 10px -7px hsla(0,0%,0%,.5);
+.logo{
+   padding: 3px;
+   width :7vh;
+   height: 7vh;
+   border-radius : 100%;
 }
-.corners:after {
-  left: -50px;
-  -webkit-transform: rotate(-45deg);
-     -moz-transform: rotate(-45deg);
-      -ms-transform: rotate(-45deg);
-       -o-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+
+h2{
+   margin-left: 0;
+   margin-right: 0;
+   align-content: center;
 }
-.corners:before {
-  right: -50px;
-  -webkit-transform: rotate(45deg);
-     -moz-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-       -o-transform: rotate(45deg);
-          transform: rotate(45deg);
-}
+
+.login-form {
+   width: 100%;
+ }
+
+ .login-form-forgot {
+   float: right;
+ }
+
+ .login-form-button {
+   color : white;
+   width: 100%;
+   border-radius: 5px;
+   padding-top: 2px;
+   padding-bottom: 2px;
+   background-color: DodgerBlue;
+ }
+
+ .input-component{
+   width : 100%;
+    border-radius : 5px;
+ }
+ 

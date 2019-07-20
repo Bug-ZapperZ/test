@@ -26,7 +26,10 @@ class Login extends Component{
         // alert(user.uid)
         if(user.uid === 'Kho5wHIeJqWJqmkP9JQAKbXZpEi1')
         {
-          // alert("Teacher Loggedin")
+          this.setState({
+            teacherLogin : true,
+            logedIn : false
+          })
         }
         else
         {

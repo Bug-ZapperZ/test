@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import logo from '../../../Images/logo.png'
 import man from '../../../Images/man.png'
 import * as firebase from 'firebase'
+import './style.css'
 
 export default class Profile extends Component {
 
