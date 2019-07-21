@@ -45,6 +45,7 @@ class Apptitude extends Component{
       Index : index
     })
   }
+  
   BtnIndex = text =>{
      if(text === 'next'){
        this.setState(prevState =>({
@@ -64,9 +65,16 @@ class Apptitude extends Component{
       test : data,
     })
   }
+  SubmitAnswer(){
+    firebase.database().ref('jk').child('Answers').on('value',(data) => {
+      let Answer = data.toJSON()
+      console.log(Answer);
+    })
+  }
   componentWillMount() {
     firebase.database().ref('test').child('tcode').on('value',(data) => {
       let dat = data.toJSON()
+      console.log('JSON :  '+data.toJSON())
       let copytestArr =[].concat(this.state.test)
       copytestArr.push({'question' : dat['Array']['0']['0'],'Optiona' : dat['Array']['0']['1'],'Optionb' : dat['Array']['0']['2'],'Optionc':dat['Array']['0']['3'],'Optiond':dat['Array']['0']['4'],'Value': null})
       console.log(copytestArr)
@@ -103,12 +111,15 @@ class Apptitude extends Component{
                          </div>  
                           <div style = {{width : '100%',borderTop : '3px solid blue',color : 'white', backgroundColor : '#080301', padding : 10,paddingTop : 0,paddingLeft : 20}}>
                             <div className = 'row' style = {{padding : '20px', alignItems : 'center', justifyContent :'center', margin : 'auto'}}>
-                            <div className = 'col-md-4'>
+                            <div className = 'col-md-3'>
                               <button style = {{border : 'none',color : 'white',background : 'blue'}} disabled = {this.state.Index === 0} onClick = {this.BtnIndex.bind(this,'prev')}>{`< Prev`}</button>
                              </div> 
-                              <div className = 'col-md-4'><button style = {{border : 'none',color : 'white',background : 'blue'}}>{this.state.Index}</button></div>
-                              <div className = 'col-md-4'>
+                              <div className = 'col-md-3'><button style = {{border : 'none',color : 'white',background : 'blue'}}>{this.state.Index}</button></div>
+                              <div className = 'col-md-3'>
                               <button disabled = {this.state.Index === (this.state.test.length) -1} style = {{border : 'none',color : 'white',background : 'blue'}} onClick = {this.BtnIndex.bind(this,'next')}>{`Next >`}</button>
+                              </div>
+                              <div className = 'col-md-3'>
+                                <button onClick = {this.SubmitAnswer} style = {{border : 'none',color : 'white',background : 'blue'}}>SUBMIT</button>
                               </div>
                             </div>  
                           </div>  

@@ -25,7 +25,8 @@ class Toolbar extends Component{
     }
     
     componentWillMount(){
-        var user = firebase.auth().currentUser;
+        try{
+            var user = firebase.auth().currentUser;
         var UserID = user.uid;
         firebase.database().ref('StudentsDetailsWithUID/').child(UserID).on('value',(data) => {
           let dat = data.toJSON();
@@ -34,6 +35,11 @@ class Toolbar extends Component{
             url : dat['Profile']
           })
         })
+        }
+        catch(e)
+        {
+            alert(e);
+        }
       }
 
     changeAction = (props)=>{

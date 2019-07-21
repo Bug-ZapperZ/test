@@ -18,6 +18,8 @@ export default class Teacher extends Component {
        super(props);
        this.state = {
            testArr : [],
+           Len:1,
+           AnsArr : []
        }
     }
     addTest(){
@@ -28,6 +30,7 @@ export default class Teacher extends Component {
         this.setState({
             testArr : copyTestArr,
         })
+        
     }
         else{
             alert(this.state.testArr.length)
@@ -37,10 +40,21 @@ export default class Teacher extends Component {
                 Array : this.state.testArr[0][2]
               }).then(() => {
                 alert("Inserted")
+                console.log(this.state.testArr[0][2])
               }
               ).catch((error) =>{
                  alert(error)
                 });
+
+                firebase.database().ref(TestName).child('Answers').update({
+                    Array : this.state.AnsArr
+                  }).then(() => {
+                    alert("Inserted")
+                    console.log(this.state.AnsArr)
+                  }
+                  ).catch((error) =>{
+                     alert(error)
+                    });
         }
     }
     RetriveData(){
@@ -48,6 +62,7 @@ export default class Teacher extends Component {
             console.log(data.toJSON())
         });
     }
+    
     handleInput=(pos,event) =>{
         let copyTestArr = [].concat(this.state.testArr)
         copyTestArr[0][pos] = event.target.value;
@@ -56,6 +71,10 @@ export default class Teacher extends Component {
         })
     }
     addQuestion(categoryindex){
+        this.setState({
+            Len : this.state.Len + 1
+        })
+        alert(this.state.Len)
         let copyTestArr = [].concat(this.state.testArr)
         copyTestArr[0][2].push(['','','','',''])
         this.setState({
@@ -63,12 +82,24 @@ export default class Teacher extends Component {
         },()=>{console.log(categoryindex)})
     }
     deleteQuestion(index){
+        this.setState({
+            Len : this.state.Len - 1
+        })
+        alert(this.state.Len)
         console.log(index)
         let copyTestArr = [].concat(this.state.testArr)
         copyTestArr[0][2] = copyTestArr[0][2].slice(0,index).concat(copyTestArr[0][2].slice(index+1,copyTestArr[0][2].length))
         this.setState({
             testArr : copyTestArr,
         })
+    }
+    addAnsOption(index,pos,event){
+        let Answer = [].concat(this.state.AnsArr)
+        Answer[index] = event.target.value;
+        this.setState({
+            AnsArr : Answer
+        })
+        console.log(this.state.AnsArr)
     }
     addOption(index,pos,event){
         let copyTestArr = [].concat(this.state.testArr)
@@ -125,6 +156,14 @@ export default class Teacher extends Component {
                                                                <input value = {questionData[4]} onChange = {this.addOption.bind(this,questionIndex,4)}  placeholder='Enter Option D' /> 
                                                             </div>
                                                         </div>   
+                                                        <div className = 'row'>
+                                                            <div className = 'col-md-3'>
+                                                                <input value = {questionData[5]} onChange = {this.addAnsOption.bind(this,questionIndex,5)}  placeholder='Enter Answer Option' /> 
+                                                            </div>
+                                                            <div className = 'col-md-3'>
+
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 )
                                             })
