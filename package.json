@@ -18,7 +18,7 @@
     "react-loader-spinner": "^2.3.0",
     "react-loading-overlay": "^1.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
+    "react-scripts": "5.0.1",
     "react-tap-event-plugin": "^3.0.3",
     "react-with-firebase-auth": "^1.0.3",
     "rebass": "^3.1.1"
